@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { removeSelectedFilm } from "../redux/actions/filmDetailsAsyncActions";
-import { fetchFilmDetails } from "../redux/actions/filmDetailsAsyncActions";
-import style from "../style/FilmDetails.scss";
+import {
+  fetchFilmDetails,
+  removeSelectedFilm,
+} from "./../model/filmDetailsAsyncActions";
+import style from "../../../style/FilmDetails.scss";
 
 const FilmDetails = () => {
   const film = useSelector((state) => state.selectedFilm);

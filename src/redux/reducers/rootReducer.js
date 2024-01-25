@@ -1,12 +1,12 @@
-import { combineReducers } from 'redux'
-import filmsListReducer from './filmsListReducer'
-import selectedFilmReducer from './selectedFilmReducer'
-import APIerrorsReducer from './APIerrorsReducer'
+import { combineReducers } from "redux";
+import filmsListReducer from "../../modules/film/model/filmsListReducer";
+import selectedFilmReducer from "./../../modules/film/model/selectedFilmReducer";
+import APIerrorsReducer from "./APIerrorsReducer";
 
-const rootReducer = combineReducers ({
-    filmsList: filmsListReducer,
-    selectedFilm: selectedFilmReducer, 
-    APIerror: APIerrorsReducer,
-})
+const rootReducer = combineReducers({
+  filmsList: filmsListReducer,
+  selectedFilm: selectedFilmReducer,
+  APIerror: APIerrorsReducer,
+});
 
-export default rootReducer
+export default rootReducer;

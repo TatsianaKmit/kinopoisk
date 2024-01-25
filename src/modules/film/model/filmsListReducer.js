@@ -1,4 +1,4 @@
-import {FETCH_FILMS_LIST} from "../types/action-types"
+import {FETCH_FILMS_LIST} from "../../../redux/types/action-types"
 
 const initialState = {
         films: [],

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import FilmComponent from "./FilmComponent";
-import { fetchFilms } from "../redux/actions/filmsListAsyncActions";
+import { fetchFilms } from "../model/filmsListAsyncActions";
 import axios from "axios";
-import style from "../style/FilmListing.scss";
+import style from "../../../style/FilmListing.scss";
 
 const FilmListing = () => {
   const films = useSelector((state) => state.filmsList);

@@ -1,9 +1,9 @@
 import { NavLink, Routes, Route } from "react-router-dom";
-import FilmListing from "../../Components/FilmListing";
-import Header from "../../Components/Header";
+import Header from "./../../modules/Header";
 import Error from "./Error";
 import "../../style/app.scss";
-import FilmDetails from "../../Components/FilmDetails";
+import FilmListing from "./../../modules/film/ui/FilmListing";
+import FilmDetails from "./../../modules/film/ui/FilmDetails";
 
 function App() {
   return (
