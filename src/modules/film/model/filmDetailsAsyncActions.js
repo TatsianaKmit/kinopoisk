@@ -1,17 +1,10 @@
-import axios from "axios";
-import { errorTrue } from "../../../redux/actions/APIerrorsActions";
 import { fetchDetails } from "../api/film.api";
 import {
-  SELECTED_FILM,
   REMOVE_SELECTED_FILM,
+  FETCH_FILM_DETAILS_REQUEST,
+  FETCH_FILM_DETAILS_SUCCESS,
+  FETCH_FILM_DETAILS_FAILURE
 } from "./../../../redux/types/action-types";
-
-export const selectedFilm = (film) => {
-  return {
-    type: SELECTED_FILM,
-    payload: film,
-  };
-};
 
 export const removeSelectedFilm = () => {
   return {
@@ -19,22 +12,40 @@ export const removeSelectedFilm = () => {
   };
 };
 
+
+const fetchFilmDetailsRequest = () => {
+  return {
+    type: FETCH_FILM_DETAILS_REQUEST
+  }
+}
+
+const fetchFilmDetailsSuccess = film => {
+  return {
+    type: FETCH_FILM_DETAILS_SUCCESS,
+    payload: film
+  }
+}
+
+const fetchFilmDetailsFailure = error => {
+  return {
+    type: FETCH_FILM_DETAILS_FAILURE,
+    payload: error
+  }
+}
+
 export const fetchFilmDetails = (id) => {
   return async (dispatch) => {
     try {
+      dispatch(fetchFilmDetailsRequest())
       const response = await fetchDetails(id);
       if (response.data) {
         const film = response.data;
-        dispatch(selectedFilm(film));
-        // loading setState - true
-        //
+        dispatch(fetchFilmDetailsSuccess(film));
       }
     } catch (error) {
       const errorMsg = error.message;
-      dispatch(errorTrue(errorMsg));
+      dispatch(fetchFilmDetailsFailure(errorMsg))
       console.log("ERROR:", errorMsg);
-    } finally {
-      // loading setState - false
     }
   };
 };

@@ -1,31 +1,39 @@
-import axios from "axios";
-import { FETCH_FILMS_LIST } from "./../../../redux/types/action-types";
+import { FETCH_FILMS_LIST_REQUEST, FETCH_FILMS_LIST_SUCCESS, FETCH_FILMS_LIST_FAILURE } from "./../../../redux/types/action-types";
 import { fetchFilmList } from "./../api/film.api";
-import { errorTrue } from "./../../../redux/actions/APIerrorsActions";
 
-export const fetchFilmsList = (films) => {
+const fetchFilmsListRequest = () => {
   return {
-    type: FETCH_FILMS_LIST,
-    payload: films,
-  };
-};
+    type: FETCH_FILMS_LIST_REQUEST
+  }
+}
+
+const fetchFilmsListSuccess = films => {
+  return {
+    type: FETCH_FILMS_LIST_SUCCESS,
+    payload: films
+  }
+}
+
+const fetchFilmsListFailure = error => {
+  return {
+    type: FETCH_FILMS_LIST_FAILURE,
+    payload: error
+  }
+}
 
 export const fetchFilms = () => {
   return async (dispatch) => {
     try {
+      dispatch(fetchFilmsListRequest())
       const response = await fetchFilmList();
       if (response.data.items) {
         const films = response.data.items;
-        dispatch(fetchFilmsList(films));
-        // loading setState - true
-        //
+        dispatch(fetchFilmsListSuccess(films));
       }
     } catch (error) {
       const errorMsg = error.message;
-      dispatch(errorTrue(errorMsg));
+      dispatch(fetchFilmsListFailure(errorMsg))
       console.log("ERROR:", errorMsg);
-    } finally {
-      // loading setState - false
     }
   };
 };
