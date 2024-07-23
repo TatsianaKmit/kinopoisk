@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import FilmComponent from "../modules/film/ui/FilmComponent";
-import { fetchFilms } from "../modules/film/model/filmsListAsyncActions";
+import { fetchFilms } from "../modules/film/model/filmsListSlice";
 
 const ListPage = () => {
   const dispatch = useDispatch();

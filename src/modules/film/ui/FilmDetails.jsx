@@ -1,17 +1,14 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchFilmDetails,
-  removeSelectedFilm,
-} from "../model/filmDetailsAsyncActions";
+import { fetchFilmDetails, removeSelectedFilm } from "../model/filmsDetailsSlice";
 import { FadeLoader } from "react-spinners";
 
 const FilmDetails = () => {
-  const { films, loading, error } = useSelector((state) => state.selectedFilm);
+  const { film, loading, error } = useSelector((state) => state.selectedFilm);
   const { posterUrl, nameRu, nameEn, slogan, countries, genres, description, year, ratingKinopoisk, ratingImdb
     , ratingFilmCritics, filmLength } =
-    films || {};
+    film || {};
   const hours = Math.floor(filmLength / 60);
   const minutes = filmLength % 60;
   const dispatch = useDispatch();
@@ -31,7 +28,7 @@ const FilmDetails = () => {
           <div className="spin">
             <FadeLoader color="#ffffff" speedMultiplier={6} />
           </div>
-        ) : films && Object.keys(films).length > 0 ? (
+        ) : film && Object.keys(film).length > 0 ? (
           <div className='container-tiny'>
             <div className="item-page__wrapper">
               <>

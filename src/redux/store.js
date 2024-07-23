@@ -1,9 +1,12 @@
-import {createStore, applyMiddleware} from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import rootReducer from './reducers/rootReducer'
-import thunk from 'redux-thunk'
+import { configureStore } from "@reduxjs/toolkit";
+import filmsListReducer from '../modules/film/model/filmsListSlice'
+import selectedFilmReducer from '../modules/film/model/filmsDetailsSlice'
 
-const store = createStore(rootReducer,
-    composeWithDevTools(applyMiddleware(thunk)))
+const store = configureStore({
+    reducer: {
+        filmsList: filmsListReducer,
+        selectedFilm: selectedFilmReducer
+    },
+});
 
 export default store
