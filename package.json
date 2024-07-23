@@ -2,7 +2,7 @@
   "name": "application",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://tatsianakmit.github.io/kinopoisk/",
+  "homepage": "https://tatsianakmit.github.io/kinopoisk",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
     "@testing-library/jest-dom": "^5.16.5",
