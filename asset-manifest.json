@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/kinopoisk/static/css/main.290efa9f.css",
+    "main.js": "/kinopoisk/static/js/main.5dca71b4.js",
+    "index.html": "/kinopoisk/index.html",
+    "main.290efa9f.css.map": "/kinopoisk/static/css/main.290efa9f.css.map",
+    "main.5dca71b4.js.map": "/kinopoisk/static/js/main.5dca71b4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.290efa9f.css",
+    "static/js/main.5dca71b4.js"
+  ]
+}
